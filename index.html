@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Turtle's Home · 归家项目组</title>
+
+  <!-- SEO -->
+  <meta name="description" content="Turtle's Home 归家项目组——以长期建设为导向的技术型团队，专注于稳定、可靠、可持续的项目与服务。" />
+  <meta name="keywords" content="Turtle's Home, 归家项目组, Minecraft, 服务器, 技术团队" />
+  <meta name="author" content="Turtle's Home Project Team" />
+  <link rel="canonical" href="https://turtlehome.xyz/" />
+
+  <!-- 社交分享卡片 -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Turtle's Home" />
+  <meta property="og:title" content="Turtle's Home · 归家项目组" />
+  <meta property="og:description" content="立于高处，行向远方。以长期建设为导向的技术型团队。" />
+  <meta property="og:url" content="https://turtlehome.xyz/" />
+  <meta property="og:image" content="https://turtlehome.xyz/classic2.png" />
+  <meta property="og:locale" content="zh_CN" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Turtle's Home · 归家项目组" />
+  <meta name="twitter:description" content="立于高处，行向远方。以长期建设为导向的技术型团队。" />
+  <meta name="twitter:image" content="https://turtlehome.xyz/classic2.png" />
+
+  <!-- 主题色 & 图标 -->
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f7f8fa" />
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0b0c0f" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+  <!-- 安全（服务端响应头的补充，见 README 的 Cloudflare 配置） -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; connect-src 'self'; base-uri 'self'; form-action 'self'" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+  <!-- 结构化数据 -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Turtle's Home Project Team",
+    "alternateName": "Turtle's Home 归家项目组",
+    "url": "https://turtlehome.xyz/",
+    "slogan": "立于高处，行向远方",
+    "logo": "https://turtlehome.xyz/turtle_logo_transparent.png"
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg: #0b0c0f;
+      --bg-soft: #101318;
+      --card: #14161b;
+      --card-hover: #181b22;
+      --text: #e8e8e8;
+      --sub: #9a9a9a;
+      --border: #262a33;
+      --brand: #3ddc84;
+      --brand-soft: rgba(61, 220, 132, 0.12);
+      --brand-glow: rgba(61, 220, 132, 0.08);
+      --shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+    }
+
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #f7f8fa;
+        --bg-soft: #ffffff;
+        --card: #ffffff;
+        --card-hover: #fbfcfd;
+        --text: #1a1a1a;
+        --sub: #5b5b5b;
+        --border: #e5e7eb;
+        --brand: #16a34a;
+        --brand-soft: rgba(22, 163, 74, 0.08);
+        --brand-glow: rgba(22, 163, 74, 0.05);
+        --shadow: 0 12px 32px rgba(17, 24, 39, 0.08);
+      }
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2 { font-weight: 600; letter-spacing: 0.02em; }
+
+    a { color: var(--brand); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 0 22px;
+    }
+
+    /* ===== 导航栏 ===== */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: color-mix(in srgb, var(--bg) 78%, transparent);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.3s ease;
+    }
+    .nav.scrolled { border-bottom-color: var(--border); }
+    .nav-inner {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 0 22px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .nav-brand img { width: 30px; height: 30px; border-radius: 8px; }
+    .nav-links { display: flex; align-items: center; gap: 6px; }
+    .nav-links a {
+      color: var(--sub);
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 0.92rem;
+      text-decoration: none;
+      transition: color 0.2s, background 0.2s;
+    }
+    .nav-links a:hover {
+      color: var(--text);
+      background: var(--brand-soft);
+      text-decoration: none;
+    }
+
+    /* ===== Hero ===== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 120px 20px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 50% at 50% 30%, var(--brand-glow), transparent 70%),
+        radial-gradient(ellipse 40% 30% at 80% 80%, var(--brand-glow), transparent 70%);
+      pointer-events: none;
+    }
+    .hero img {
+      width: 190px;
+      height: 190px;
+      margin-bottom: 30px;
+      border-radius: 24px;
+      filter: drop-shadow(0 18px 40px rgba(0, 0, 0, 0.35));
+      animation: float 5.5s ease-in-out infinite;
+      position: relative;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 6vw, 3.4rem);
+      margin: 0 0 14px;
+      position: relative;
+    }
+    .hero .slogan { color: var(--sub); font-size: 1.08rem; position: relative; }
+    .hero .scroll-hint {
+      position: absolute;
+      bottom: 34px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: var(--sub);
+      font-size: 0.85rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      opacity: 0.7;
+    }
+    .hero .scroll-hint .dot {
+      width: 22px; height: 34px;
+      border: 1.5px solid var(--sub);
+      border-radius: 12px;
+      position: relative;
+    }
+    .hero .scroll-hint .dot::after {
+      content: "";
+      position: absolute;
+      top: 7px; left: 50%;
+      width: 3px; height: 7px;
+      margin-left: -1.5px;
+      border-radius: 2px;
+      background: var(--brand);
+      animation: wheel 1.6s ease-in-out infinite;
+    }
+    @keyframes wheel {
+      0% { transform: translateY(0); opacity: 1; }
+      70% { transform: translateY(12px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 0; }
+    }
+
+    /* ===== 章节 ===== */
+    section { padding: 88px 0; border-top: 1px solid var(--border); }
+    .section-head {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 34px;
+    }
+    .section-head::before {
+      content: "";
+      width: 5px;
+      height: 26px;
+      border-radius: 4px;
+      background: linear-gradient(180deg, var(--brand), transparent);
+    }
+    .section-head h2 { font-size: 1.6rem; margin: 0; }
+
+    /* ===== 卡片 ===== */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      max-width: 720px;
+      margin-bottom: 20px;
+      transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      border-color: color-mix(in srgb, var(--brand) 45%, var(--border));
+      box-shadow: var(--shadow);
+      background: var(--card-hover);
+    }
+
+    /* ===== 成员卡片（可展开） ===== */
+    .member {
+      width: 100%;
+      text-align: left;
+      font: inherit;
+      color: inherit;
+      cursor: pointer;
+      display: block;
+      position: relative;
+    }
+    .member .member-top {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .member .role { color: var(--sub); margin-top: 4px; font-size: 0.95rem; }
+    .member .chevron {
+      flex-shrink: 0;
+      color: var(--brand);
+      transition: transform 0.3s ease;
+      font-size: 1.1rem;
+    }
+    .member[aria-expanded="true"] .chevron { transform: rotate(180deg); }
+    .member .detail {
+      max-height: 0;
+      overflow: hidden;
+      color: var(--sub);
+      transition: max-height 0.4s ease, margin-top 0.4s ease, opacity 0.3s ease;
+      opacity: 0;
+      margin-top: 0;
+    }
+    .member[aria-expanded="true"] .detail {
+      max-height: 220px;
+      opacity: 1;
+      margin-top: 16px;
+    }
+    .member .badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      color: var(--brand);
+      background: var(--brand-soft);
+      border-radius: 999px;
+      padding: 2px 10px;
+      margin-top: 10px;
+    }
+
+    /* ===== 经典图片 ===== */
+    .gallery {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      max-width: 880px;
+    }
+    .gallery figure {
+      margin: 0;
+      cursor: zoom-in;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--card);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .gallery figure:hover {
+      transform: scale(1.015);
+      box-shadow: var(--shadow);
+    }
+    .gallery img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+    }
+    .gallery figcaption {
+      padding: 10px 14px;
+      font-size: 0.85rem;
+      color: var(--sub);
+    }
+
+    /* ===== 联系 ===== */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      max-width: 720px;
+    }
+    .contact-card { margin-bottom: 0; }
+    .contact-card .label { color: var(--sub); font-size: 0.85rem; margin-bottom: 8px; }
+    .contact-card .value {
+      font-size: 1.15rem;
+      font-weight: 600;
+      word-break: break-all;
+    }
+    .copy-btn {
+      margin-top: 14px;
+      background: var(--brand-soft);
+      color: var(--brand);
+      border: 1px solid color-mix(in srgb, var(--brand) 35%, transparent);
+      border-radius: 10px;
+      padding: 8px 18px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .copy-btn:hover { background: color-mix(in srgb, var(--brand) 22%, transparent); transform: translateY(-1px); }
+    .copy-btn:active { transform: translateY(0); }
+    .copy-tip { color: var(--brand); font-size: 0.85rem; margin-top: 8px; min-height: 1.2em; }
+
+    /* ===== Footer ===== */
+    footer {
+      padding: 56px 0;
+      text-align: center;
+      color: var(--sub);
+      font-size: 0.88rem;
+      border-top: 1px solid var(--border);
+    }
+    footer .links { margin-bottom: 12px; }
+    footer a { color: var(--sub); margin: 0 12px; text-decoration: none; }
+    footer a:hover { color: var(--brand); text-decoration: none; }
+
+    /* ===== 返回顶部 ===== */
+    .to-top {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: var(--card);
+      color: var(--text);
+      font-size: 1.15rem;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(8px);
+      transition: opacity 0.3s, transform 0.3s, visibility 0.3s;
+      z-index: 90;
+      box-shadow: var(--shadow);
+    }
+    .to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+    .to-top:hover { border-color: var(--brand); color: var(--brand); }
+
+    /* ===== Lightbox ===== */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(0, 0, 0, 0.88);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.25s ease, visibility 0.25s;
+    }
+    .lightbox.open { opacity: 1; visibility: visible; }
+    .lightbox img {
+      max-width: 92vw;
+      max-height: 88vh;
+      border-radius: 10px;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+    }
+    .lightbox .close {
+      position: absolute;
+      top: 20px; right: 26px;
+      color: #fff;
+      font-size: 2rem;
+      cursor: pointer;
+      background: none;
+      border: none;
+      opacity: 0.8;
+    }
+    .lightbox .close:hover { opacity: 1; }
+    .lightbox .hint {
+      position: absolute;
+      bottom: 22px;
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.85rem;
+    }
+
+    /* ===== 淡入动画 ===== */
+    .fade {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: all 0.8s ease;
+    }
+    .fade.show { opacity: 1; transform: translateY(0); }
+
+    /* ===== 移动端 ===== */
+    @media (max-width: 700px) {
+      .nav-links a { padding: 6px 8px; font-size: 0.85rem; }
+      .nav-links .hide-sm { display: none; }
+      section { padding: 64px 0; }
+      .gallery { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .hero img { width: 150px; height: 150px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- 导航栏 -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a class="nav-brand" href="#top">
+        <img src="turtle_logo_transparent.png" alt="Turtle's Home Logo" width="30" height="30">
+        <span>Turtle's Home</span>
+      </a>
+      <div class="nav-links">
+        <a href="#about">关于</a>
+        <a href="#members">成员</a>
+        <a href="#services">业务</a>
+        <a href="#gallery" class="hide-sm">图片</a>
+        <a href="#contact">联系</a>
+        <a href="agreement.html" class="hide-sm">协议</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 首屏 -->
+  <header class="hero" id="top">
+    <img src="turtle_logo_transparent.png" alt="Turtle's Home Logo">
+    <h1>立于高处，行向远方</h1>
+    <p class="slogan">Turtle's Home 项目组</p>
+    <div class="scroll-hint">
+      <span>向下滚动</span>
+      <div class="dot"></div>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- 关于我们 -->
+    <section class="fade" id="about">
+      <div class="section-head"><h2>关于我们</h2></div>
+      <div class="card">
+        Turtle's Home 归家项目组是一个以长期建设为导向的技术型团队，
+        专注于稳定、可靠、可持续的项目与服务。<br><br>
+        我们相信，真正有价值的事情，值得被耐心对待。
+      </div>
+    </section>
+
+    <!-- 项目组成员 -->
+    <section class="fade" id="members">
+      <div class="section-head"><h2>项目组成员</h2></div>
+
+      <button class="card member" aria-expanded="false" onclick="toggleMember(this)">
+        <div class="member-top">
+          <strong>负责人 · 王波</strong>
+          <span class="chevron" aria-hidden="true">▾</span>
+        </div>
+        <div class="role">技术负责人</div>
+        <div class="detail">
+          负责 Turtle's Home 项目组整体方向与技术决策，
+          统筹项目规划、技术架构与长期发展路线。
+        </div>
+        <span class="badge">方向 &amp; 架构</span>
+      </button>
+
+      <button class="card member" aria-expanded="false" onclick="toggleMember(this)">
+        <div class="member-top">
+          <strong>负责人 · 煮波</strong>
+          <span class="chevron" aria-hidden="true">▾</span>
+        </div>
+        <div class="role">服务器 / 运维方向</div>
+        <div class="detail">
+          负责 Minecraft 服务器的部署、维护与稳定性保障，
+          处理运行中的技术问题与优化方案。
+        </div>
+        <span class="badge">运维 &amp; 部署</span>
+      </button>
+
+      <button class="card member" aria-expanded="false" onclick="toggleMember(this)">
+        <div class="member-top">
+          <strong>负责人 · 吹波</strong>
+          <span class="chevron" aria-hidden="true">▾</span>
+        </div>
+        <div class="role">项目组宣传</div>
+        <div class="detail">
+          负责项目组对外宣传工作，
+          促进项目与使用者之间的良性互动。
+        </div>
+        <span class="badge">宣传 &amp; 内容</span>
+      </button>
+
+      <button class="card member" aria-expanded="false" onclick="toggleMember(this)">
+        <div class="member-top">
+          <strong>负责人 · 噬波</strong>
+          <span class="chevron" aria-hidden="true">▾</span>
+        </div>
+        <div class="role">社区 / 对外联络</div>
+        <div class="detail">
+          负责项目组对外沟通、社区维护与用户反馈整理，
+          促进项目组与客户沟通交流。
+        </div>
+        <span class="badge">社区 &amp; 联络</span>
+      </button>
+
+      <button class="card member" aria-expanded="false" onclick="toggleMember(this)">
+        <div class="member-top">
+          <strong>负责人 · 零波</strong>
+          <span class="chevron" aria-hidden="true">▾</span>
+        </div>
+        <div class="role">肥胖（?）</div>
+        <div class="detail">
+          负责项目组宣传图、视频的制作，
+          确保宣传工作的顺利进行。
+        </div>
+        <span class="badge">视觉 &amp; 设计</span>
+      </button>
+
+    </section>
+
+    <!-- 项目组业务 -->
+    <section class="fade" id="services">
+      <div class="section-head"><h2>项目组业务</h2></div>
+      <div class="card">
+        <strong>Minecraft 服务器云服务（中止）</strong>
+        <p style="margin-bottom:0;">
+          由于不可抗力因素，该业务暂时中止，详情请关注项目组官方账号动态，或加入项目组用户交流群获取最新消息。
+          Turtle's Home 项目组永垂不朽，永世长存！
+        </p>
+      </div>
+    </section>
+
+    <!-- 经典图片 -->
+    <section class="fade" id="gallery">
+      <div class="section-head"><h2>经典图片</h2></div>
+      <div class="gallery">
+        <figure onclick="openLightbox('classic1.png', '经典图片 1')">
+          <img src="classic1.png" alt="经典图片 1" loading="lazy">
+          <figcaption>经典图片 1</figcaption>
+        </figure>
+        <figure onclick="openLightbox('classic2.png', '经典图片 2')">
+          <img src="classic2.png" alt="经典图片 2" loading="lazy">
+          <figcaption>经典图片 2</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- 联系我们 -->
+    <section class="fade" id="contact">
+      <div class="section-head"><h2>联系我们</h2></div>
+      <div class="contact-grid">
+        <div class="card contact-card">
+          <div class="label">官方 QQ</div>
+          <div class="value">暂无</div>
+          <button class="copy-btn" onclick="copyQQ(this)">复制 QQ 号</button>
+          <div class="copy-tip"></div>
+        </div>
+        <div class="card contact-card">
+          <div class="label">更多渠道</div>
+          <div class="value" style="font-size:0.98rem; font-weight:400; color:var(--sub);">
+            其他联系方式将后续公开。<br>
+            敬请关注项目组官方账号动态。
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="links">
+      <a href="agreement.html">用户协议总则</a>
+    </div>
+    <div>© <span id="year"></span> Turtle's Home Project Team · All Rights Reserved</div>
+  </footer>
+
+  <!-- 返回顶部 -->
+  <button class="to-top" id="toTop" aria-label="返回顶部" onclick="window.scrollTo({top:0, behavior:'smooth'})">↑</button>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+    <button class="close" aria-label="关闭" onclick="closeLightbox(event)">×</button>
+    <img id="lightboxImg" src="" alt="">
+    <div class="hint" id="lightboxHint"></div>
+  </div>
+
+  <script>
+    // 年份
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // 导航栏滚动状态
+    const nav = document.getElementById("nav");
+    const toTop = document.getElementById("toTop");
+    window.addEventListener("scroll", () => {
+      const y = window.scrollY;
+      nav.classList.toggle("scrolled", y > 10);
+      toTop.classList.toggle("show", y > 420);
+    }, { passive: true });
+
+    // 成员卡片展开
+    function toggleMember(el) {
+      const expanded = el.getAttribute("aria-expanded") === "true";
+      el.setAttribute("aria-expanded", String(!expanded));
+    }
+
+    // 淡入动画（带错落延迟）
+    const items = document.querySelectorAll(".fade");
+    const io = new IntersectionObserver(entries => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          e.target.style.transitionDelay = (Math.min(i, 3) * 0.08) + "s";
+          e.target.classList.add("show");
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    items.forEach(i => io.observe(i));
+
+    // Lightbox
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.getElementById("lightboxImg");
+    const lightboxHint = document.getElementById("lightboxHint");
+    function openLightbox(src, hint) {
+      lightboxImg.src = src;
+      lightboxHint.textContent = hint;
+      lightbox.classList.add("open");
+      document.body.style.overflow = "hidden";
+    }
+    function closeLightbox(e) {
+      if (e.target === lightbox || e.target.classList.contains("close")) {
+        lightbox.classList.remove("open");
+        lightboxImg.src = "";
+        document.body.style.overflow = "";
+      }
+    }
+    document.addEventListener("keydown", e => {
+      if (e.key === "Escape") {
+        lightbox.classList.remove("open");
+        lightboxImg.src = "";
+        document.body.style.overflow = "";
+      }
+    });
+
+    // 复制 QQ
+    function copyQQ(btn) {
+      const tip = btn.parentElement.querySelector(".copy-tip");
+      const qq = "永垂不朽，永世长存";
+      const done = () => {
+        tip.textContent = "已复制到剪贴板";
+        setTimeout(() => { tip.textContent = ""; }, 2200);
+      };
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(qq).then(done, () => fallback(qq, done));
+      } else {
+        fallback(qq, done);
+      }
+    }
+    function fallback(text, done) {
+      const ta = document.createElement("textarea");
+      ta.value = text;
+      ta.style.position = "fixed";
+      ta.style.opacity = "0";
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand("copy"); } catch (e) {}
+      document.body.removeChild(ta);
+      done();
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>用户协议总则 · Turtle's Home</title>
+
+  <!-- SEO -->
+  <meta name="description" content="Turtle's Home 项目用户协议总则（Turtle's Home Program TOS And AUP）。使用本项目组服务前，请阅读并同意本协议。" />
+  <link rel="canonical" href="https://turtlehome.xyz/agreement" />
+
+  <!-- 社交分享卡片 -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Turtle's Home" />
+  <meta property="og:title" content="用户协议总则 · Turtle's Home" />
+  <meta property="og:description" content="Turtle's Home 项目用户协议总则（TOS And AUP）。" />
+  <meta property="og:url" content="https://turtlehome.xyz/agreement" />
+
+  <!-- 主题色 & 图标 -->
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f7f8fa" />
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0b0c0f" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+  <!-- 安全 -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; connect-src 'self'; base-uri 'self'; form-action 'self'" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+  <style>
+    :root {
+      --bg: #0b0c0f;
+      --bg-soft: #101318;
+      --card: #14161b;
+      --text: #e8e8e8;
+      --sub: #9a9a9a;
+      --border: #262a33;
+      --brand: #3ddc84;
+      --brand-soft: rgba(61, 220, 132, 0.12);
+    }
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #f7f8fa;
+        --bg-soft: #ffffff;
+        --card: #ffffff;
+        --text: #1a1a1a;
+        --sub: #5b5b5b;
+        --border: #e5e7eb;
+        --brand: #16a34a;
+        --brand-soft: rgba(22, 163, 74, 0.08);
+      }
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.9;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: var(--brand); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .wrap { max-width: 960px; margin: 0 auto; padding: 0 22px; }
+
+    /* ===== 顶部条 ===== */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: color-mix(in srgb, var(--bg) 80%, transparent);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .topbar-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 22px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+    .topbar a.back {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--sub);
+      font-size: 0.92rem;
+    }
+    .topbar a.back:hover { color: var(--brand); text-decoration: none; }
+    .topbar .doc-title { font-size: 0.9rem; color: var(--sub); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+    /* ===== 正文 ===== */
+    main { padding: 48px 0 90px; }
+
+    .doc-head {
+      padding: 30px 0 34px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 40px;
+    }
+    .doc-head h1 { font-size: 1.9rem; margin: 0 0 10px; }
+    .doc-head .meta { color: var(--sub); font-size: 0.95rem; }
+
+    /* 目录 */
+    .toc {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 22px 26px;
+      margin-bottom: 44px;
+    }
+    .toc .toc-title {
+      font-size: 0.85rem;
+      color: var(--sub);
+      letter-spacing: 0.08em;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .toc .toc-title::before {
+      content: "";
+      width: 4px; height: 14px;
+      border-radius: 3px;
+      background: var(--brand);
+    }
+    .toc ol {
+      margin: 0;
+      padding-left: 20px;
+      columns: 2;
+      column-gap: 36px;
+    }
+    .toc li { margin: 6px 0; font-size: 0.94rem; break-inside: avoid; }
+    .toc a { color: var(--text); }
+    .toc a:hover { color: var(--brand); text-decoration: none; }
+
+    h2 {
+      margin: 52px 0 20px;
+      font-size: 1.25rem;
+      padding-left: 14px;
+      border-left: 4px solid var(--brand);
+      border-radius: 2px;
+      scroll-margin-top: 76px;
+    }
+    p { margin: 14px 0; font-size: 0.97rem; }
+    .lead {
+      color: var(--sub);
+      border-left: 3px solid var(--border);
+      padding-left: 16px;
+      margin: 0 0 34px;
+    }
+    .sub { padding-left: 22px; color: var(--sub); }
+
+    footer {
+      padding: 34px 0 60px;
+      text-align: center;
+      color: var(--sub);
+      font-size: 0.85rem;
+      border-top: 1px solid var(--border);
+    }
+    footer a { color: var(--sub); margin: 0 10px; }
+    footer a:hover { color: var(--brand); text-decoration: none; }
+
+    /* 返回顶部 */
+    .to-top {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: var(--card);
+      color: var(--text);
+      font-size: 1.15rem;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(8px);
+      transition: opacity 0.3s, transform 0.3s, visibility 0.3s;
+      z-index: 90;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+    }
+    .to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+    .to-top:hover { border-color: var(--brand); color: var(--brand); }
+
+    @media (max-width: 700px) {
+      .toc ol { columns: 1; }
+      .topbar .doc-title { display: none; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- 顶部条 -->
+  <div class="topbar">
+    <div class="topbar-inner">
+      <a class="back" href="index.html">← 返回首页</a>
+      <span class="doc-title">Turtle's Home 项目用户协议总则</span>
+    </div>
+  </div>
+
+  <main class="wrap">
+
+    <header class="doc-head">
+      <h1>Turtle's Home 项目用户协议总则</h1>
+      <div class="meta">(Turtle's Home Program TOS And AUP) · 二〇二五年九月 制</div>
+    </header>
+
+    <p class="lead">
+      为了您能更好的使用本项目组项目服务，您应当阅读并遵守认定同意遵循本协议。
+    </p>
+
+    <!-- 目录 -->
+    <nav class="toc" aria-label="目录">
+      <div class="toc-title">目 录</div>
+      <ol>
+        <li><a href="#s1">一、总则</a></li>
+        <li><a href="#s2">二、项目账户</a></li>
+        <li><a href="#s3">三、平台服务使用守则</a></li>
+        <li><a href="#s4">四、用户权利和义务</a></li>
+        <li><a href="#s5">五、本项目组权利和义务</a></li>
+        <li><a href="#s6">六、隐私及其他个人信息的保护</a></li>
+        <li><a href="#s7">七、责任范围及责任限制</a></li>
+        <li><a href="#s8">八、完整协议</a></li>
+        <li><a href="#s9">九、商标、知识产权</a></li>
+        <li><a href="#s10">十、法律适用与管辖</a></li>
+      </ol>
+    </nav>
+
+    <h2 id="s1">一、总则</h2>
+    <p>1. Turtle's Home 项目服务（以下简称“本服务”）是由 Turtle's Home 项目组（以下简称“本项目组”）与 Turtle's Home 项目服务用户共同缔结的对双方具有约束力的有效契约。本协议由您和本项目组签订。在您成为本项目组用户之前，请您务必谨慎阅读、充分理解各条款内容；一旦您使用本服务，说明您已充分阅读、理解并接受本协议的全部内容，即表示您同意遵循本协议之所有约定。</p>
+    <p>2. 本项目组向用户提供本用户协议上所展示的产品与服务，并将不断更新服务内容，最新的本项目组项目服务以本项目组公布的以及向用户实际提供的为准。</p>
+
+    <h2 id="s2">二、Turtle's Home 项目账户</h2>
+    <p>1. 在使用本服务前，您必须先注册并取得平台提供的本项目组账户，在完成注册或激活流程时，您必须同意并保证：</p>
+    <p class="sub">1.1 您所填写的用户信息是真实、准确、完整、及时的，且保证本项目组可以通过您所填写的联系方式与您取得联系。</p>
+    <p class="sub">1.2 您应根据本项目组对应服务的条例要求及时提供相应的身份证明等资料，否则本项目组有权拒绝向您提供相关服务。</p>
+    <p class="sub">1.3 如果您提供的资料或信息包含有不正确、虚假的信息，本项目组将有权向您发出询问或要求改正的通知并保留取消您资格并随时结束为您提供服务的权利，本项目组对此不需承担任何责任，您将承担因此产生的任何直接或间接损失及不利后果。</p>
+    <p class="sub">1.4 您应对您的本项目组账户负责，只有您本人可以使用您的本项目组账户，该账户具有唯一性，不可转让、不可赠与、不可继承。若因您自身原因致使数据、口令、密码等信息丢失或泄漏等，本项目组对此不需承担任何责任，您将承担因此产生的任何直接或间接损失及不利后果。</p>
+    <p>2. 您须自行负责对您的本项目组账户和密码保密，且须对您在该登录名和密码下发生的所有活动（包括但不限于信息披露、发布信息、网上点击同意或提交各类规则协议等）承担责任。您同意：</p>
+    <p class="sub">2.1 如发现任何人未经授权使用您的本项目组账户和密码，或发生违反保密规定的任何其他情况，您会立即通知本项目组。</p>
+    <p class="sub">2.2 若因您提供的信息不完全、虚假等导致本项目组无法正确核实您的真实身份或本项目组无法正确判断您的需求等，而导致的本项目组无法为您进行及时处理，给您带来的损失，您应自行承担。同时，您理解本项目组对您的请求采取措施需要合理期限，对于您通知本项目组以及本项目组根据您的有效通知采取措施之前，由于他人行为已经给您造成的损失，本项目组不承担任何责任。</p>
+
+    <h2 id="s3">三、平台服务使用守则</h2>
+    <p>为有效保障您使用本平台服务的合法权益，您理解并同意接受以下规则：</p>
+    <p>3.1 您通过包括但不限于以下方式向本项目组发出的指令，均视为您本人的指令，不可撤回或撤销，您应自行对本项目组执行前述指令所产生的任何结果承担责任。</p>
+    <p class="sub">3.1.1 通过您的本项目组账户和密码进行的所有操作（包括但不限于删除或更改您的数据、销毁您的虚拟财产等）；</p>
+    <p class="sub">3.1.2 通过与您告知本项目组的手机号码或邮箱向本项目组发送的全部信息；</p>
+    <p>3.2 您购买本服务后，仅可供自己使用，不得直接或间接以转让、出售、出租、合作等任何形式，有偿或无偿地将部分或全部的服务提供给他人使用。</p>
+    <p>3.3 您应自行对因使用本服务而存储在本项目组的各类数据等信息，在本服务之外，采取合理、安全的技术措施，确保其安全性，并对自己的行为（包括但不限于请求本项目组备份、添加插件等）所引起的结果承担全部责任。</p>
+    <p>3.4 您了解并同意本项目组单方修改服务的相关规则，而无须征得您的同意，服务规则应以最新规则为准，您同意并遵照服务规则是您使用本服务的前提。</p>
+    <p>3.5 在您使用本服务时，本项目组有权依照相应的服务收费介绍、订单或相关协议向您收取服务费用。本项目组拥有制订及调整服务资费的权利，具体服务资费以您使用本服务时本项目组告知您的为准。</p>
+    <p>3.6 本项目组可能会以手机短信或电子邮件（或电话或微信等）方式通知您服务进展情况以及提示您进行下一步的操作，但本项目组不保证您能够收到或者及时收到该手机短信或电子邮件（或电话或微信信息等），且不对此承担任何后果。因此，在服务过程中您应当及时询问本项目组服务状态。因您没有及时查看或未能提交相关申请而导致的任何纠纷或损失，本项目组不负任何责任。</p>
+
+    <h2 id="s4">四、用户权利和义务</h2>
+    <p>1. 您有权利享受本项目组提供的服务，并有权利在接受本项目组提供的服务时获得本项目组的技术支持、咨询等服务。您保证不会利用技术或其他手段破坏或扰乱本项目组的服务。</p>
+    <p>2. 您应尊重本项目组及其他第三方的知识产权和其他合法权利，并保证在发生侵犯上述权益的违法事件时尽力保护本项目组及其合作伙伴等免于因该等事件受到影响或损失；本项目组保留您侵犯本项目组合法权益时终止向您提供服务并不退还任何款项的权利。</p>
+    <p>3. 对由于您向本项目组提供的联络方式有误以及您用于接受本项目组邮件的电子邮箱安全性、稳定性不佳而导致的一切后果，您应自行承担责任，包括但不限于因您未能及时收到本项目组的相关通知而导致的后果和损失。</p>
+    <p>4. 您保证：</p>
+    <p class="sub">4.1 您使用本项目组服务时将遵从国家、地方法律法规、行业惯例和社会公共道德，不会利用本项目组提供的服务进行存储、发布、传播如下信息和内容：</p>
+    <p class="sub" style="padding-left:44px;">4.1.1 违反国家法律法规政策的任何内容（信息）；</p>
+    <p class="sub" style="padding-left:44px;">4.1.2 违反国家规定的政治宣传或新闻信息；</p>
+    <p class="sub" style="padding-left:44px;">4.1.3 涉及国家秘密或安全的信息；</p>
+    <p class="sub" style="padding-left:44px;">4.1.4 封建迷信或淫秽、色情、下流的信息或教唆犯罪的信息；</p>
+    <p class="sub" style="padding-left:44px;">4.1.5 博彩有奖、赌博游戏；违反国家民族和宗教政策的信息；</p>
+    <p class="sub" style="padding-left:44px;">4.1.6 妨碍互联网运行安全的信息；</p>
+    <p class="sub" style="padding-left:44px;">4.1.7 侵害他人合法权益的信息或其他有损于社会秩序、社会治安、公共道德的信息或内容；</p>
+    <p class="sub" style="padding-left:44px;">4.1.8 您承认本项目组有权在您违反上述约定时终止向您提供服务并不予退还任何款项，因您上述行为给本项目组造成损失的，您应予赔偿。一经发现，帐户将会被禁止，帐户余额也不予退回。您保证注册时使用的手机号码、邮箱、微信账号长期有效，一旦发现手机号码过期经通知后还未修改的，将视作无效用户，帐户将会被禁止，帐户余额也不予退回。</p>
+    <p>5. 使用本项目组产品或服务时，应遵守您与本项目组签订的服务条款、本项目组的管理规范、流程、服务说明、价格说明和您确认同意的内容，包括但不限于：</p>
+    <p class="sub">5.1 您应按时付款或续费，如未按规定及时续费导致的损失由您自行负责；</p>
+    <p class="sub">5.2 不应出现任何破坏或试图破坏网络安全的行为等；如您违反上述保证，本项目组除有权根据相关服务条款采取删除信息、中止服务、终止服务的措施，限制您账户的部分或全部功能，如因您上述行为给本项目组造成损失的，您应予赔偿。</p>
+    <p>6. 您应对存放在本项目组上的数据以及进入和管理本项目组各类服务的密码、密保答案的完整性和保密性负责。为了数据的安全，您应定期本地备份关键性数据。因您维护不当或保密不当致使上述数据、密码、密保答案等丢失或泄漏所引起的一切损失和后果均由您自行承担。本项目组不对您数据的丢失、损坏及其连带责任、预期收益负责。因本项目组的过失、过错、硬件损坏等原因导致您数据丢失或其他损失的，本项目组最高赔偿限额不超过您已向本项目组支付的款项总额。</p>
+    <p>7. 您应向本项目组提交执行本服务协议的联系人和联系方式，并在上述信息发生变更后主动在线更新信息。因您提供的人员信息不真实、不准确、不完整，以及因以上人员的行为或不作为而产生的结果，均由您完全负责。</p>
+
+    <h2 id="s5">五、本项目组权利和义务</h2>
+    <p>1. 本项目组应根据您选择的服务以及交纳款项的情况向您提供合格的网络技术和信息服务。</p>
+    <p>2. 本项目组承诺对您资料采取对外保密措施，不向第三方披露您资料，不授权第三方使用您资料，除非：</p>
+    <p class="sub">2.1 依据本服务条款或者您与本项目组之间其他服务协议、合同、在线条款等规定可以提供；</p>
+    <p class="sub">2.2 依据法律法规的规定应当提供；</p>
+    <p class="sub">2.3 行政、司法等职权部门要求本项目组提供；</p>
+    <p class="sub">2.4 您同意本项目组向第三方提供；</p>
+    <p class="sub">2.5 本项目组解决举报事件、提起诉讼而提交的；</p>
+    <p class="sub">2.6 本项目组为防止严重违法行为或涉嫌犯罪行为发生而采取必要合理行动所必须提交的；</p>
+    <p class="sub">2.7 本项目组为向您提供产品、服务、信息而向第三方提供的，包括本项目组通过第三方的技术及服务向您提供产品、服务、信息的情况；</p>
+    <p class="sub">2.8 其他本项目组认为需要提供的情况。</p>
+    <p>3. 当存在如下情形之一时，本项目组有权对您名下账户财产的部分或全部进行冻结：</p>
+    <p class="sub">3.1 国家法律、法规、政策、法律文书的规定；</p>
+    <p class="sub">3.2 国家有权机关要求进行冻结的；</p>
+    <p class="sub">3.3 您使用本项目组服务的行为涉嫌违反国家法律法规及行政规定的；</p>
+    <p class="sub">3.4 本项目组基于单方面合理判断，认为您的账户操作、资金进出等存在异常时；</p>
+    <p class="sub">3.5 您遭到他人投诉，且对方已经提供了一定证据的；</p>
+    <p class="sub">3.6 本项目组根据自行合理判断，认为可能产生风险的其他情况。本项目组按照前述规定对您的账户资金进行冻结后，将通过邮件、短信或电话等方式通知您按照相应的程序进行申诉。如果您按照本服务条款的要求进行申诉并经本项目组审核通过的，本项目组将立即解除冻结措施；如果您未在规定时间内进行申请，或您的申诉未能通过本项目组审核的，则您确认本项目组有权长期冻结，并在不告知您的情形下做任何决策。</p>
+    <p>3.7 若本项目组自行发现或根据主管部门的信息、权利人的投诉等发现，您违反相关法律法规、规章制度或本协议的，本项目组有权根据自己的独立判断单方采取以下措施中的一种或多种处理：</p>
+    <p class="sub">3.7.1 要求您立即删除、修改相关内容；</p>
+    <p class="sub">3.7.2 直接删除、屏蔽相关内容或断开链接等；</p>
+    <p class="sub">3.7.3 限制、暂停向您提供服务（包括但不限于直接对您的部分服务进行下线并收回相关资源、对您账户进行操作限制等）；</p>
+    <p class="sub">3.7.4 情节严重的，本项目组有权终止向您提供服务，终止协议（包括但不限于直接对您的全部服务进行下线并收回相关资源等），已收服务费用将作为违约金不予退还；</p>
+    <p class="sub">3.7.5 依法追究您的其他责任。</p>
+    <p>4. 您理解并认可，本项目组有权在发生以下情形之一时暂停或终止部分或全部服务。本项目组由于以下情形暂停或终止服务时将提前或立刻通知您。在本项目组通知您后，因您没有采取有效措施而导致您的数据损坏或财产灭失的由您自行负责。</p>
+    <p class="sub">4.1 由于地震、火灾、核辐射、核泄漏、核爆炸、战争、恐怖袭击、武装叛乱等不可抗力因素导致本项目组服务所需硬件或数据存储载体损坏的。</p>
+    <p class="sub">4.2 由于黑客攻击、DDOS 攻击、电信部门技术调整或故障、网站升级等原因而造成的服务中断或者延迟。</p>
+    <p class="sub">4.3 本项目组主要成员发生以下情形之一的：</p>
+    <p class="sub" style="padding-left:44px;">4.3.1 身故；</p>
+    <p class="sub" style="padding-left:44px;">4.3.2 双目或单目失明、任意侧肢体无法活动或不受意识控制、口齿不清等；</p>
+    <p class="sub" style="padding-left:44px;">4.3.3 精神错乱；</p>
+    <p class="sub" style="padding-left:44px;">4.3.4 患癌症等需长时间治疗的疾病；</p>
+    <p class="sub" style="padding-left:44px;">4.3.5 患急性病；</p>
+    <p class="sub" style="padding-left:44px;">4.3.6 其他导致本项目组主要成员无法确保服务正常进行的状况。</p>
+    <p>5. 本项目组保留一切权利。</p>
+
+    <h2 id="s6">六、隐私及其他个人信息的保护</h2>
+    <p>一旦您同意本服务条款或使用本服务，您即同意本项目组按照以下条款来使用和披露您的个人信息。</p>
+    <p>1. 登录名和密码：在您注册帐户时，本项目组会要求您设置本项目组账户登录名和密码来识别您的身份，并设置密码提示问题及其答案，以便在您丢失密码时用以确认您的身份。您仅可通过您设置的密码来使用该账户，如果您泄漏了密码，您可能会丢失您的个人识别信息，并可能导致对您不利的法律后果。该账户和密码因任何原因受到潜在或现实危险时，您应该立即和本项目组取得联系，在本项目组采取行动前，本项目组对此不负任何责任。</p>
+    <p>2. 登录记录：为了保障您使用本服务的安全以及不断改进服务质量，本项目组将记录并保存您登录和使用本服务的相关信息，但本项目组承诺不将此类信息提供给任何第三方（除双方另有约定或法律法规另有规定及本项目组关联项目组外）。</p>
+    <p>3. 广告：本项目组会对本项目组用户的身份数据进行综合统计，并出于销售和奖励的需要使用或披露。</p>
+    <p>4. 安全：本项目组仅按现有技术提供相应的安全措施来使本项目组掌握的信息不丢失，不被滥用和变造。这些安全措施包括向其他服务器备份数据和对用户密码加密。尽管有这些安全措施，但本项目组不保证这些信息的绝对安全。</p>
+
+    <h2 id="s7">七、责任范围及责任限制</h2>
+    <p>1. 本项目组仅对本服务条款中列明的责任承担范围负责。</p>
+    <p>2. 服务之合作单位，所提供之服务品质及内容由该合作单位自行负责。</p>
+    <p>3. 您了解并同意，因您使用本服务、违反本服务条款或在您的账户下采取的任何行动，而导致的任何第三方索赔，应且仅应由您本人承担。如果由此引起本项目组及其关联项目组、成员、客户和合作伙伴被第三方索赔的，您应负责处理，并承担由此造成的全部责任。</p>
+    <p>4. 在法律允许的情况下，本项目组对于与本服务条款有关或由本服务条款引起的任何间接的、惩罚性的、特殊的、派生的损失（包括业务损失、收益损失、利润损失、使用数据、商誉或其他经济利益的损失），不论是如何产生的，也不论是由对本服务条款的违约（包括违反保证）还是由侵权造成的，均不负有任何责任，即使事先已被告知此等损失的可能性。另外即使本服务条款规定的排他性救济没有达到其基本目的，也应排除本项目组对上述损失的责任。</p>
+    <p>5. 除本服务条款另有规定或本项目组与您就某一具体产品及/或服务另有约定外，在任何情况下，您同意本项目组对本服务条款所承担的赔偿责任总额不超过向您收取的当次服务费用总额。</p>
+
+    <h2 id="s8">八、完整协议</h2>
+    <p>1. 本服务条款由本服务条款与本项目组向您展示的各项规则组成，相关名词可互相引用参照，如有不同理解，以本服务条款为准。</p>
+    <p>2. 本服务条款的章节标题仅为行文方便而设，不具有法律或合同效力。</p>
+    <p>3. 您对本服务条款理解和认同，您即对本服务条款所有组成部分的内容理解并认同，一旦您使用本服务，您和本项目组即受本服务条款所有组成部分的约束。</p>
+    <p>4. 本服务条款部分内容被有管辖权的法院认定为违法的，不因此影响其他内容的效力。</p>
+
+    <h2 id="s9">九、商标、知识产权</h2>
+    <p>1. 本项目组所有内容，包括但不限于著作、图片、档案、资讯、资料，均由本项目组依法拥有其知识产权，包括但不限于商标权、专利权、著作权、商业秘密等。</p>
+    <p>2. 非经本项目组书面同意，任何人不得擅自使用、修改、复制、公开传播、改变、散布、发行上述内容。</p>
+
+    <h2 id="s10">十、法律适用与管辖</h2>
+    <p>本协议之效力、解释、变更、执行与争议解决均适用中华人民共和国法律。因本协议产生之争议，均应依照中华人民共和国法律予以处理，并提交至本项目组所属管辖区人民法院受理。</p>
+
+  </main>
+
+  <footer class="wrap">
+    <a href="index.html">返回首页</a>
+    <div style="margin-top:8px;">© <span id="year"></span> Turtle's Home Project Team · All Rights Reserved</div>
+  </footer>
+
+  <!-- 返回顶部 -->
+  <button class="to-top" id="toTop" aria-label="返回顶部" onclick="window.scrollTo({top:0, behavior:'smooth'})">↑</button>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+    const toTop = document.getElementById("toTop");
+    window.addEventListener("scroll", () => {
+      toTop.classList.toggle("show", window.scrollY > 420);
+    }, { passive: true });
+  </script>
+
+</body>
+</html>
