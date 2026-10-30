@@ -11,7 +11,7 @@ if OUT.exists():
     shutil.rmtree(OUT)
 OUT.mkdir()
 # Copy only public website files; never include Git metadata, scripts or docs.
-for pattern in ("*.html", "*.png", "*.svg", "*.ico", "*.txt", "_headers"):
+for pattern in ("*.html", "*.png", "*.svg", "*.ico", "*.txt", "_headers", "_redirects"):
     for source in ROOT.glob(pattern):
         if source.is_file():
             shutil.copy2(source, OUT / source.name)

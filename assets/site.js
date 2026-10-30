@@ -31,31 +31,37 @@ window.addEventListener(
 document
   .querySelectorAll("[data-year]")
   .forEach((el) => (el.textContent = new Date().getFullYear()));
-const motion = document.querySelector(".motion-toggle");
-motion?.addEventListener("click", () => {
-  const paused = document.body.classList.toggle("motion-paused");
-  motion.setAttribute("aria-pressed", String(paused));
-  motion.setAttribute("aria-label", paused ? "播放背景动画" : "暂停背景动画");
-  motion.textContent = paused ? "播放动画 ▷" : "暂停动画 Ⅱ";
-});
-const filters = document.querySelectorAll("[data-filter]");
-filters.forEach((btn) =>
-  btn.addEventListener("click", () => {
-    filters.forEach((b) => {
-      b.classList.toggle("active", b === btn);
-      b.setAttribute("aria-pressed", String(b === btn));
-    });
-    let count = 0;
-    document.querySelectorAll("[data-category]").forEach((card) => {
-      card.hidden =
-        btn.dataset.filter !== "all" &&
-        card.dataset.category !== btn.dataset.filter;
-      if (!card.hidden) count++;
-    });
-    document.querySelector(".filter-status").textContent =
-      `显示 ${count} 篇文章`;
+// All decorative motion shares one pause state, including reduced-motion changes.
+const motionButtons = document.querySelectorAll("[data-motion-toggle]");
+const motionPreference = matchMedia("(prefers-reduced-motion: reduce)");
+let userPaused = false;
+function updateMotion() {
+  const paused = userPaused || motionPreference.matches;
+  document.body.classList.toggle("motion-paused", paused);
+  motionButtons.forEach((button) => {
+    button.setAttribute("aria-pressed", String(paused));
+    button.setAttribute("aria-label", paused ? "播放页面动画" : "暂停页面动画");
+    button.textContent = paused ? "播放动画 ▷" : "暂停动画 Ⅱ";
+  });
+}
+motionButtons.forEach((button) =>
+  button.addEventListener("click", () => {
+    userPaused = !userPaused;
+    updateMotion();
   }),
 );
+motionPreference.addEventListener("change", updateMotion);
+updateMotion();
+document.querySelectorAll("[data-word-play]").forEach((scene) => {
+  const button = scene.querySelector(".word-button");
+  button.addEventListener("click", () => {
+    const forward = scene.classList.toggle("is-forward");
+    button.setAttribute("aria-pressed", String(forward));
+    scene.querySelector(".word-announcement").textContent = forward
+      ? "立于高处，行向远方。继续向前。"
+      : "立于高处，行向远方";
+  });
+});
 const dialog = document.querySelector(".lightbox");
 if (dialog) {
   document.querySelectorAll("[data-image]").forEach((btn) =>
